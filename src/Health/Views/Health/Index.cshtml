@@ -1,0 +1,19 @@
+﻿@model List<Health.Models.EnvironmentHealth>
+
+@{
+    ViewBag.Title = "Environment Summary";
+}
+
+<h2>Environment Summary</h2>
+
+<table>
+<thead><tr><th>Environment</th><th>Status</th></tr></thead>
+@foreach (var env in Model) {
+    <tr>
+        <td><a href="\Health\@env.Name">@env.Name</a></td>
+        <td>@env.Health.Status</td>
+        <td>@env.Health.TimeStamp</td>
+    </tr>    
+}
+
+</table>

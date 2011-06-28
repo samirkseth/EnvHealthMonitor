@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <link href="http://googleapis.com/ajax/libs/jqueryui/1.8.13/themes/eggplant/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="http://googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
+
+    @if(ViewBag.NoTimer == null)
+    { 
+        <script type="text/javascript" lang="javascript">
+            var reloadTimer = null;
+            window.onload = function () {
+                setReloadTime(10); // In this example we'll use 5 seconds.
+            }
+            function setReloadTime(secs) {
+                if (arguments.length == 1) {
+                    if (reloadTimer) clearTimeout(reloadTimer);
+                    reloadTimer = setTimeout("setReloadTime()", Math.ceil(parseFloat(secs) * 1000));
+                }
+                else {
+                    location.reload();
+                }
+            }
+        </script> 
+    }
+</head>
+<body>
+    <div class="page">
+        <header>
+            <div id="title">
+                <h1>Environment Health Monitor</h1>
+            </div>
+            <div id="logindisplay">
+                Welcome <strong>@User.Identity.Name</strong>!
+            </div>
+            <nav>
+                <ul id="menu">
+                    <li>@Html.ActionLink("Home", "Index", "Health")</li>
+                    <li>@Html.ActionLink("About", "About", "Health")</li>
+                </ul>
+            </nav>
+        </header>
+        <section id="main">
+            @RenderBody()
+        </section>
+        <footer>
+        </footer>
+    </div>
+</body>
+</html>

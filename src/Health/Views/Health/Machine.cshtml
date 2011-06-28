@@ -1,0 +1,39 @@
+﻿@model Health.Models.MachineHealth 
+           
+<h2>@Model.ID.MachineName</h2>
+
+<p>Machine Status : @Model.Health.Status</p>
+
+@if (Model.Message != null) { 
+    <p>@Model.Message</p>
+}
+
+@if (Model.Parameters.Count > 0) { 
+    <table>
+    <thead><tr><th>Name</th><th>Value</th></tr></thead>
+    @foreach (var parameter in Model.Parameters) {
+        <tr>
+            <td>@parameter.Name</td>
+            <td>@parameter.Value</td>
+        </tr>    
+    }
+    </table>
+    <br />
+}
+
+<table>
+<thead><tr><th>Probe</th><th>Status</th><th>Note</th><th>Timestamp</th></tr></thead>
+@foreach (var probe in Model.Probes)
+{
+    <tr>
+        <td>@probe.Name</td>
+        <td>@probe.Health.Status</td>
+        <td>@probe.Note</td>
+        <td>@probe.Health.TimeStamp</td>
+    </tr>    
+}
+</table>
+
+
+
+

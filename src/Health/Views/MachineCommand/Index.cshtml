@@ -1,0 +1,12 @@
+﻿@model Health.Models.MachineCommand
+
+@{
+    ViewBag.NoTimer = true;
+}
+
+<form action="@Url.Action("Index", "MachineCommand")" method="post">
+    <textarea name="command" rows="5" cols="50">@Model.Command</textarea><input type="submit" value="Save" /><br />    
+
+    <textarea name="result" rows="25" cols="100">@Model.Result</textarea><br />
+</form>
+

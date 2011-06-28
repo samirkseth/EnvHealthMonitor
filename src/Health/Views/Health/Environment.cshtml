@@ -1,0 +1,35 @@
+﻿@model Health.Models.EnvironmentHealth
+           
+<h2>@Model.Name</h2>
+
+
+@if (Model.Parameters.Count > 0) { 
+    <h3>Parameters</h3>
+    <table>
+    <thead><tr><th>Name</th><th>Value</th></tr></thead>
+    @foreach (var parameter in Model.Parameters)
+    {
+        <tr>
+            <td>@parameter.Name</td>
+            <td>@parameter.Value</td>
+        </tr>    
+    }
+    </table>
+    <br />
+}
+
+<h3>Machines</h3>
+<table>
+<thead><tr><th>Machine</th><th>Status</th><th>TimeStamp</th></tr></thead>
+@foreach (var mac in Model.MachineHealth)
+{
+    <tr>
+        <td><a href="\Health\@mac.ID.EnvName\@mac.ID.MachineName">@mac.ID.MachineName</a></td>
+        <td>@mac.Health.Status</td>
+        <td>@mac.Health.TimeStamp</td>
+    </tr>    
+}
+
+</table>
+
+

@@ -1,0 +1,8 @@
+﻿@{
+    ViewBag.Title = "Test Probe";
+}
+
+<form action="@Url.Action("New", "Health")" method="post">
+    <textarea name="probeXML" rows="20" cols="50">Enter Data Here</textarea><br />
+    <input type="submit" value="Save" />
+</form>

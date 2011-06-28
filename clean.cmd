@@ -1,0 +1,1 @@
+psake.cmd Clean & pause
